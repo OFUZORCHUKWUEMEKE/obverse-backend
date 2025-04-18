@@ -16,7 +16,7 @@ const config = configuration();
     ConfigModule.forRoot({
       isGlobal: true,
       envFilePath: "./",
-      load:[configuration]
+      load: [configuration]
     }),
     UsersModule,
     PaymentsModule,
@@ -39,4 +39,4 @@ const config = configuration();
   controllers: [AppController],
   providers: [AppService],
 })
-export class AppModule { }
+export class AppModule {}
