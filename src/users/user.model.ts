@@ -14,6 +14,9 @@ export type UserDocument = User & Document;
 
 @Schema({ timestamps: true })
 export class User extends Document{
+
+  _id:any
+
   @Prop({ required: true, unique: true, index: true })
   user_id: string;
 
