@@ -15,7 +15,7 @@ const config = configuration();
   imports: [
     ConfigModule.forRoot({
       isGlobal: true,
-      envFilePath: "./",
+      // envFilePath: ".",
       load: [configuration]
     }),
     UsersModule,
