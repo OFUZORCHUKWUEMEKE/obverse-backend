@@ -66,6 +66,17 @@ export class TelegramService {
     async handleStart(ctx: Context) {
         const user = ctx.from;
         await ctx.reply(`Welcome to Obverse, ${user.first_name || 'there'}! 👋\n\nUse /help to see available commands.`);
+        const existing = await this.userRepository.findOne({ user_id: user.id.toString() })
+        if (!existing) {
+            const new_user = await this.userRepository.create({
+                user_id: user.id.toString(),
+                first_name: user.first_name,
+                last_name: user.last_name,
+                username: user.username
+            })
+            console.log(new_user)
+        }
+        console.log(existing)
     }
 
     async handleHelp(ctx: Context) {
@@ -87,9 +98,8 @@ export class TelegramService {
         if (!user) {
             ctx.reply('User not found. Please use /start to register.');
         }
-
         await ctx.reply(
-            `Your Profile 👤\n\n` +
+            `Profile 👤\n\n` +
             `Telegram ID: ${user.user_id}\n` +
             `Username: ${user.username || 'Not set'}\n` +
             `First Name: ${user.first_name || 'Not set'}\n` +

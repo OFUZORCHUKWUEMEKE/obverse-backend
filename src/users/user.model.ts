@@ -16,10 +16,10 @@ export type UserDocument = User & Document;
 export class User extends Document {
   _id: any
 
-  @Prop({ required: true, unique: true, index: true })
+  @Prop({ required: true, unique: true})
   user_id: string;
 
-  @Prop({ required: true, unique: true })
+  @Prop({ required: true})
   username: string;
 
   @Prop({ required: false })

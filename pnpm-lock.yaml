@@ -50,6 +50,9 @@ importers:
       telegraf:
         specifier: ^4.16.3
         version: 4.16.3
+      telegraf-session-local:
+        specifier: ^2.1.1
+        version: 2.1.1(debug@4.4.0)(telegraf@4.16.3)
     devDependencies:
       '@nestjs/cli':
         specifier: ^10.0.0
@@ -681,6 +684,12 @@ packages:
 
   '@types/json-schema@7.0.15':
     resolution: {integrity: sha512-5+fP8P8MFNC+AyZCDxrB2pkZFPGzqQWUzpSeuuVLvm8VMcorNYavBqoFcxK8bQz4Qsbn4oUEEem4wDLfcysGHA==}
+
+  '@types/lodash@4.17.16':
+    resolution: {integrity: sha512-HX7Em5NYQAXKW+1T+FiuG27NGwzJfCX3s1GjOa7ujxZa52kjJLOr4FUxT+giF6Tgxv1e+/czV/iTtBw27WTU9g==}
+
+  '@types/lowdb@1.0.15':
+    resolution: {integrity: sha512-xaMNIveDCryK4UvnUJOc2BCOH0lPivdvWHrutsLryo9r9Id3RqZq2RDmT4eddiEPYzu7nJMw6nFIcVifcqjWqg==}
 
   '@types/methods@1.1.4':
     resolution: {integrity: sha512-ymXWVrDiCxTBE3+RIrrP533E70eA+9qu7zdWoHuOmGujkYtzf4HQF96b8nwHLqhuf4ykX61IGRIB38CC6/sImQ==}
@@ -1791,6 +1800,9 @@ packages:
     resolution: {integrity: sha512-Fd4gABb+ycGAmKou8eMftCupSir5lRxqf4aD/vd0cD2qc4HL07OjCeuHMr8Ro4CoMaeCKDB0/ECBOVWjTwUvPQ==}
     engines: {node: '>=8'}
 
+  is-promise@2.2.2:
+    resolution: {integrity: sha512-+lP4/6lKUBfQjZ2pdxThZvLUAafmZb8OAxFb8XXtiQmS35INgr85hdOGoEs124ez1FCnZJt6jau/T+alh58QFQ==}
+
   is-stream@2.0.1:
     resolution: {integrity: sha512-hFoiJiTl63nn+kstHGBtewWSKnQLpyb155KHheA1l39uvtO9nWIop1p3udqPcUd/xbF1VLMO4n7OI6p7RbngDg==}
     engines: {node: '>=8'}
@@ -2068,6 +2080,10 @@ packages:
   log-symbols@4.1.0:
     resolution: {integrity: sha512-8XPvpAA8uyhfteu8pIvQxpJZ7SYYdpUivZpGy6sFsBuKRY/7rQGavedeB8aK+Zkyq6upMFVL/9AW6vOYzfRyLg==}
     engines: {node: '>=10'}
+
+  lowdb@1.0.0:
+    resolution: {integrity: sha512-2+x8esE/Wb9SQ1F9IHaYWfsC9FIecLOPrK4g17FGEayjUWH172H6nwicRovGvSE2CPZouc2MCIqCI7h9d+GftQ==}
+    engines: {node: '>=4'}
 
   lru-cache@10.4.3:
     resolution: {integrity: sha512-JNAzZcXrCt42VGLuYz0zfAzDfAvJWW6AfYlDBQyDV5DClI2m5sAmK+OIO7s59XfsRsWHp02jAJrRadPRGTt6SQ==}
@@ -2399,6 +2415,10 @@ packages:
     resolution: {integrity: sha512-xUXwsxNjwTQ8K3GnT4pCJm+xq3RUPQbmkYJTP5aFIfNIvbcc/4MUxgBaaRSZJ6yGJZiGSyYlM6MzwTsRk8SYCg==}
     engines: {node: '>=12'}
 
+  pify@3.0.0:
+    resolution: {integrity: sha512-C3FsVNH1udSEX48gGX1xfvwTWfsYWj5U+8/uK15BGzIGrKoUpghX8hWZwa/OFnakBiiVNmBvemTJR5mcy7iPcg==}
+    engines: {node: '>=4'}
+
   pirates@4.0.7:
     resolution: {integrity: sha512-TfySrs/5nm8fQJDcBDuUng3VOUKsd7S+zqvbOTiGXHfxX4wK31ard+hoNuvkicM/2YFzlpDgABOevKSsB4G/FA==}
     engines: {node: '>= 6'}
@@ -2668,6 +2688,9 @@ packages:
     resolution: {integrity: sha512-RwNA9Z/7PrK06rYLIzFMlaF+l73iwpzsqRIFgbMLbTcLD6cOao82TaWefPXQvB2fOC4AjuYSEndS7N/mTCbkdQ==}
     engines: {node: '>= 0.8'}
 
+  steno@0.4.4:
+    resolution: {integrity: sha512-EEHMVYHNXFHfGtgjNITnka0aHhiAlo93F7z2/Pwd+g0teG9CnM3JIINM7hVVB5/rhw9voufD7Wukwgtw2uqh6w==}
+
   streamsearch@1.1.0:
     resolution: {integrity: sha512-Mcc5wHehp9aXz1ax6bZUyY5afg9u2rv5cqQI3mRrYkGC8rW2hM02jWuwjtL++LS5qinSyhj2QfLyNsuc+VsExg==}
     engines: {node: '>=10.0.0'}
@@ -2753,6 +2776,13 @@ packages:
   tapable@2.2.1:
     resolution: {integrity: sha512-GNzQvQTOIP6RyTfE2Qxb8ZVlNmw0n88vp1szwWRimP02mnTsx3Wtn5qRdqY9w2XduFNUgvOwhNnQsjwCp+kqaQ==}
     engines: {node: '>=6'}
+
+  telegraf-session-local@2.1.1:
+    resolution: {integrity: sha512-ApcTkNh8MizkuOmt+MReKDWQkflNHkOQthuLmRc+zM+ltMTOxHRd5kKvMBKCiNFA77frDRs1a3ryUDRpF+JPJA==}
+    engines: {node: '>=12'}
+    peerDependencies:
+      debug: ^2.0.0 || ^3.0.0 || ^4.0.0
+      telegraf: ^3.38.0 || ^4.0.0
 
   telegraf@4.16.3:
     resolution: {integrity: sha512-yjEu2NwkHlXu0OARWoNhJlIjX09dRktiMQFsM678BAH/PEPVwctzL67+tvXqLCRQQvm3SDtki2saGO9hLlz68w==}
@@ -3827,6 +3857,12 @@ snapshots:
       pretty-format: 29.7.0
 
   '@types/json-schema@7.0.15': {}
+
+  '@types/lodash@4.17.16': {}
+
+  '@types/lowdb@1.0.15':
+    dependencies:
+      '@types/lodash': 4.17.16
 
   '@types/methods@1.1.4': {}
 
@@ -5082,6 +5118,8 @@ snapshots:
 
   is-path-inside@3.0.3: {}
 
+  is-promise@2.2.2: {}
+
   is-stream@2.0.1: {}
 
   is-unicode-supported@0.1.0: {}
@@ -5536,6 +5574,14 @@ snapshots:
       chalk: 4.1.2
       is-unicode-supported: 0.1.0
 
+  lowdb@1.0.0:
+    dependencies:
+      graceful-fs: 4.2.11
+      is-promise: 2.2.2
+      lodash: 4.17.21
+      pify: 3.0.0
+      steno: 0.4.4
+
   lru-cache@10.4.3: {}
 
   lru-cache@5.1.1:
@@ -5810,6 +5856,8 @@ snapshots:
   picomatch@2.3.1: {}
 
   picomatch@4.0.1: {}
+
+  pify@3.0.0: {}
 
   pirates@4.0.7: {}
 
@@ -6086,6 +6134,10 @@ snapshots:
 
   statuses@2.0.1: {}
 
+  steno@0.4.4:
+    dependencies:
+      graceful-fs: 4.2.11
+
   streamsearch@1.1.0: {}
 
   string-length@4.0.2:
@@ -6178,6 +6230,13 @@ snapshots:
       tslib: 2.8.1
 
   tapable@2.2.1: {}
+
+  telegraf-session-local@2.1.1(debug@4.4.0)(telegraf@4.16.3):
+    dependencies:
+      '@types/lowdb': 1.0.15
+      debug: 4.4.0
+      lowdb: 1.0.0
+      telegraf: 4.16.3
 
   telegraf@4.16.3:
     dependencies:
