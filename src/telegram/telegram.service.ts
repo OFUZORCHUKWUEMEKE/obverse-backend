@@ -1,14 +1,16 @@
-import { Injectable,OnModuleInit } from '@nestjs/common';
+import { Injectable, OnModuleInit } from '@nestjs/common';
 import { Telegraf, Context } from 'telegraf';
 import { InjectBot } from 'nestjs-telegraf';
 import { ConfigService } from '@nestjs/config';
-import {TelegramContext} from './telegram.interface'
+import { TelegramContext } from './telegram.interface'
+import { UserRepository } from 'src/users/user.repository';
 
 @Injectable()
 export class TelegramService {
     constructor(
         @InjectBot() private bot: Telegraf<Context>,
         private configService: ConfigService,
+        private userRepository: UserRepository
     ) { }
 
     async onModuleInit() {
@@ -19,13 +21,17 @@ export class TelegramService {
             try {
                 // Process user if they don't exist
                 const telegramUser = ctx.from;
+                console.log(telegramUser)
                 if (telegramUser) {
-                    // await this.userService.findOrCreateUser({
-                    //   telegramId: telegramUser.id.toString(),
-                    //   username: telegramUser.username,
-                    //   firstName: telegramUser.first_name,
-                    //   lastName: telegramUser.last_name,
-                    // });
+                    const user = this.userRepository.findOne({ user_id: telegramUser.id.toString() })
+                    if (!user) {
+                        await this.userRepository.create({
+                            user_id: telegramUser.id.toString(),
+                            username: telegramUser.username,
+                            first_name: telegramUser.first_name,
+                            last_name: telegramUser.last_name,
+                        })
+                    }
                 }
                 return next();
             } catch (error) {
@@ -48,7 +54,7 @@ export class TelegramService {
     private registerHandlers() {
         this.bot.start(this.handleStart.bind(this));
         this.bot.help(this.handleHelp.bind(this));
-        this.bot.command('profile', this.handleProfile.bind(this));
+        this.bot.command('profile', this.handleProfiles.bind(this));
         // this.bot.command('payment', this.handlePayment.bind(this));
         // this.bot.command('transactions', this.handleTransactions.bind(this));
 
@@ -57,38 +63,37 @@ export class TelegramService {
     }
 
 
-    async handleStart(ctx:Context) {
+    async handleStart(ctx: Context) {
         const user = ctx.from;
         await ctx.reply(`Welcome to Obverse, ${user.first_name || 'there'}! 👋\n\nUse /help to see available commands.`);
     }
 
     async handleHelp(ctx: Context) {
         await ctx.reply(
-          'Available commands:\n\n' +
-          '/start - Start the bot\n' +
-          '/help - Show this help message\n' +
-          '/profile - View your profile\n' +
-          '/payment - Make a payment\n' +
-          '/transactions - View your transaction history'
+            'Available commands:\n\n' +
+            '/start - Start the bot\n' +
+            '/help - Show this help message\n' +
+            '/profile - View your profile\n' +
+            '/payment - Make a payment\n' +
+            '/transactions - View your transaction history'
         );
     }
-    
-    async handleProfile(ctx: Context) {
+
+    async handleProfiles(ctx: Context): Promise<void> {
         const telegramId = ctx.from.id.toString();
         // const user = await this.userService.findByTelegramId(telegramId);
-        
-        // if (!user) {
-        //   return ctx.reply('User not found. Please use /start to register.');
-        // }
-        
-        // await ctx.reply(
-        //   `Your Profile 👤\n\n` +
-        //   `ID: ${user.id}\n` +
-        //   `Telegram ID: ${user.telegramId}\n` +
-        //   `Username: ${user.username || 'Not set'}\n` +
-        //   `First Name: ${user.firstName || 'Not set'}\n` +
-        //   `Last Name: ${user.lastName || 'Not set'}\n` +
-        //   `Registered: ${user.createdAt.toDateString()}`
-        // );
-      }
+        const user = await this.userRepository.findOne({ user_id: telegramId })
+
+        if (!user) {
+            ctx.reply('User not found. Please use /start to register.');
+        }
+
+        await ctx.reply(
+            `Your Profile 👤\n\n` +
+            `Telegram ID: ${user.user_id}\n` +
+            `Username: ${user.username || 'Not set'}\n` +
+            `First Name: ${user.first_name || 'Not set'}\n` +
+            `Last Name: ${user.last_name || 'Not set'}\n`
+        )
+    }
 }

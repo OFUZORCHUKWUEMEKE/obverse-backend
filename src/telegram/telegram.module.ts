@@ -3,6 +3,7 @@ import { TelegramController } from './telegram.controller';
 import { TelegramService } from './telegram.service';
 import { TelegrafModule } from 'nestjs-telegraf';
 import { ConfigModule, ConfigService } from '@nestjs/config';
+import { UsersModule } from 'src/users/users.module';
 
 @Module({
   imports: [
@@ -14,6 +15,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
         include: [TelegramModule],
       }),
     }),
+    UsersModule,
   ],
   controllers: [TelegramController],
   providers: [TelegramService],
